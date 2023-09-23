@@ -743,6 +743,8 @@ paths:
             $ref: '#/definitions/ResponseStaticBfs'
   /upload/avatar:
     post:
+      consumes:
+      - multipart/form-data
       produces:
       - application/json
       tags:
@@ -761,6 +763,8 @@ paths:
             $ref: '#/definitions/ResponseUserAvatar'
   /upload/image:
     post:
+      consumes:
+      - multipart/form-data
       produces:
       - application/json
       tags:
@@ -779,6 +783,8 @@ paths:
             $ref: '#/definitions/ResponseUploadImage'
   /upload/thumbnail:
     post:
+      consumes:
+      - multipart/form-data
       produces:
       - application/json
       tags:
