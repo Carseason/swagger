@@ -1,0 +1,3261 @@
+swagger: "2.0"
+info:
+  description: One API V1
+  title: One API V1
+  version: 3.0.0
+basePath: /api/v1
+paths:
+  /action/code:
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 用户验证码
+      operationId: postActionCode
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionCode'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionCode'
+  /action/forgetpwd:
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 用户重置密码
+      operationId: postActionForgetpwd
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionForgetpwd'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionForgetpwd'
+  /action/login:
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 用户登录
+      operationId: postActionLogin
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionLogin'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionLogin'
+  /action/oauth:
+    get:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 获取授权登录配置
+      operationId: getActionOauth
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionOauth'
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 授权登录
+      operationId: postActionOauth
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionOauth'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionLogin'
+  /action/qrcode:
+    get:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 获取二维码登录
+      operationId: getActionQrcode
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionQrcode'
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 扫码登录
+      operationId: postActionQrcode
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionQrcode'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionLogin'
+  /action/register:
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 用户注册
+      operationId: postActionRegister
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestActionRegister'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseActionRegister'
+  /announcement/list:
+    get:
+      tags:
+      - announcement
+      summary: 全部公告
+      operationId: getAnnouncementList
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAnnouncementList'
+  /author/{id}:
+    get:
+      tags:
+      - author
+      summary: 作者
+      operationId: getAuthorId
+      parameters:
+      - type: integer
+        description: Author ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAuthor'
+    post:
+      tags:
+      - author
+      summary: 作者
+      operationId: postAuthorId
+      parameters:
+      - type: integer
+        description: Author ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAuthor'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAuthor'
+  /author/{id}/fans:
+    post:
+      tags:
+      - author
+      summary: 作者的粉丝
+      operationId: postAuthorIdFans
+      parameters:
+      - type: integer
+        description: Author ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAuthorFans'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAuthorFans'
+  /author/{id}/follower:
+    post:
+      tags:
+      - author
+      summary: 作者的关注
+      operationId: postAuthorIdFollower
+      parameters:
+      - type: integer
+        description: Author ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAuthorFollower'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAuthorFollower'
+  /captcha:
+    get:
+      description: 获取验证码
+      tags:
+      - captcha
+      summary: 验证码
+      operationId: getCaptcha
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCaptcha'
+  /captcha/dots:
+    get:
+      description: 获取点击的验证码
+      tags:
+      - captcha
+      summary: 验证码
+      operationId: getCaptchaDots
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCaptcha'
+  /captcha/token:
+    get:
+      description: 获取免验证的token
+      tags:
+      - captcha
+      summary: 验证码
+      operationId: getCaptchaToken
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCaptcha'
+  /category:
+    get:
+      tags:
+      - category
+      summary: 全部分类
+      operationId: getCategory
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCategorys'
+  /category/{id}:
+    get:
+      tags:
+      - category
+      summary: 分类
+      operationId: getCategoryId
+      parameters:
+      - type: integer
+        description: Category ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCategory'
+  /channel/{name}:
+    get:
+      tags:
+      - channel
+      summary: 获取分区数据
+      operationId: getChannelName
+      parameters:
+      - type: string
+        description: Channle Name
+        name: name
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseChannel'
+  /channels:
+    get:
+      tags:
+      - channels
+      summary: 获取全部分区数据
+      operationId: getChannels
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseChannels'
+  /comments:
+    post:
+      tags:
+      - comments
+      summary: 评论
+      operationId: postComments
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestComments'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseComments'
+  /episode/{id}:
+    get:
+      tags:
+      - episode
+      summary: 剧集作品
+      operationId: geteEisodetId
+      parameters:
+      - type: integer
+        description: Episode ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseEpisode'
+  /gv/{id}:
+    get:
+      tags:
+      - gv
+      summary: GV号
+      operationId: geteGvId
+      parameters:
+      - type: string
+        description: Gv ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseGV'
+  /mall/list:
+    get:
+      tags:
+      - mall
+      summary: 全部展示的商品
+      operationId: getMallList
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseMallList'
+  /post/image/{hashid}:
+    get:
+      tags:
+      - post
+      summary: 作品
+      operationId: getPostImage
+      parameters:
+      - type: string
+        description: ImageHashId
+        name: hashid
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePostImage'
+  /post/video/{hashid}:
+    get:
+      tags:
+      - post
+      summary: 作品
+      operationId: getPostVideo
+      parameters:
+      - type: string
+        description: VideoHashId
+        name: hashid
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePostVideo'
+  /post/{id}:
+    get:
+      tags:
+      - posts
+      summary: 作品
+      operationId: getPostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePost'
+    post:
+      tags:
+      - posts
+      summary: 作品
+      operationId: postPostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestPost'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePost'
+  /posts:
+    post:
+      tags:
+      - posts
+      summary: 作品
+      operationId: postPosts
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestPosts'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePosts'
+  /product/{id}:
+    get:
+      tags:
+      - product
+      summary: 内容作品
+      operationId: getProductId
+      parameters:
+      - type: integer
+        description: Product ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseProduct'
+  /release/comment:
+    post:
+      tags:
+      - release
+      summary: 发布评论
+      operationId: postRleaseComment
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestReleaseCommentCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseReleaseComment'
+  /release/comment/{id}:
+    get:
+      tags:
+      - release
+      summary: 查询一篇发布的评论
+      operationId: getRleaseCommetId
+      parameters:
+      - type: integer
+        description: Comment ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseReleaseComment'
+    delete:
+      tags:
+      - release
+      summary: 删除一篇发布的作品
+      operationId: deleteRleaseCommetId
+      parameters:
+      - type: integer
+        description: Comment ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /release/post:
+    post:
+      tags:
+      - release
+      summary: 发布作品
+      operationId: postRleasePost
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestReleasePostCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseReleasePost'
+  /release/post/{id}:
+    get:
+      tags:
+      - release
+      summary: 查询一篇发布的作品
+      operationId: getRleasePostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseReleasePost'
+    post:
+      tags:
+      - release
+      summary: 更新作品
+      operationId: postRleasePostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestReleasePostUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseReleasePost'
+    delete:
+      tags:
+      - release
+      summary: 删除一篇发布的作品
+      operationId: deleteRleasePostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /search:
+    post:
+      tags:
+      - search
+      summary: 搜索
+      operationId: postSearch
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestSearch'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSearch'
+  /search/popular:
+    get:
+      tags:
+      - search
+      summary: 热搜
+      operationId: getearchPopular
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSearchPopular'
+  /theme/GoogleAnalytics:
+    get:
+      tags:
+      - theme
+      summary: 谷歌统计
+      operationId: getThemeGoogleAnalytics
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeGoogleAnalytics'
+  /theme/menus:
+    get:
+      tags:
+      - theme
+      summary: 网站导航
+      operationId: getThemeMenus
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeMenus'
+  /theme/pageCode:
+    get:
+      tags:
+      - theme
+      summary: 页面html代码
+      operationId: getThemePageCode
+      parameters:
+      - enum:
+        - blackboard
+        - protocal
+        - footer
+        type: string
+        name: name
+        in: query
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemePageCode'
+  /theme/register:
+    get:
+      tags:
+      - theme
+      summary: 网站注册功能
+      operationId: getThemeRegister
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeRegister'
+  /theme/release:
+    get:
+      tags:
+      - theme
+      summary: 网站投稿功能
+      operationId: getThemeRelease
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeRelease'
+  /theme/router:
+    get:
+      tags:
+      - theme
+      summary: 网站页面
+      operationId: getThemeRouter
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeRouter'
+  /theme/siteinfo:
+    get:
+      tags:
+      - theme
+      summary: 网站信息
+      operationId: getThemeSiteinfo
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseThemeSiteinfo'
+  /theme/static/bfs:
+    get:
+      tags:
+      - theme
+      summary: 静态资源
+      operationId: getThemeStaticBfs
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseStaticBfs'
+  /upload/avatar:
+    post:
+      produces:
+      - application/json
+      tags:
+      - upload
+      summary: 上传用户头像
+      operationId: postUploadAvatar
+      parameters:
+      - type: file
+        description: 头像图片文件
+        name: file
+        in: formData
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserAvatar'
+  /upload/image:
+    post:
+      produces:
+      - application/json
+      tags:
+      - upload
+      summary: 上传图片
+      operationId: postUploadImage
+      parameters:
+      - type: file
+        description: 图片文件
+        name: file
+        in: formData
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUploadImage'
+  /upload/thumbnail:
+    post:
+      produces:
+      - application/json
+      tags:
+      - upload
+      summary: 上传略缩图
+      operationId: postUploadThumbnail
+      parameters:
+      - type: file
+        description: 图片文件
+        name: file
+        in: formData
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUploadImage'
+  /user/analytics:
+    get:
+      tags:
+      - user
+      summary: 当前用户统计数据
+      operationId: getUserAnalytics
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserAnalytics'
+  /user/comments:
+    post:
+      tags:
+      - user
+      summary: 用户的评论
+      operationId: postUserComments
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestUserComments'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserComments'
+  /user/fav:
+    post:
+      tags:
+      - user
+      summary: 用户收藏作品
+      operationId: postUserFav
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestUserFav'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserFav'
+  /user/info:
+    get:
+      tags:
+      - user
+      summary: 当前用户
+      operationId: getUserInfo
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserInfo'
+    post:
+      produces:
+      - application/json
+      tags:
+      - user
+      summary: 用户资料
+      operationId: postUserInfo
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestUserInfo'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserInfo'
+  /user/notices:
+    post:
+      tags:
+      - user
+      summary: 提醒
+      operationId: postUserNotices
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestUserNotices'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserNotices'
+  /user/outlogin:
+    get:
+      tags:
+      - user
+      summary: 注销登录
+      operationId: getUserOutlogin
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /user/posts:
+    post:
+      tags:
+      - user
+      summary: 作品
+      operationId: postUserPosts
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestUserPosts'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseUserPosts'
+definitions:
+  ActionOauth:
+    type: object
+    properties:
+      github:
+        type: object
+        properties:
+          enable:
+            type: boolean
+          target:
+            type: string
+      google:
+        type: object
+        properties:
+          enable:
+            type: boolean
+          target:
+            type: string
+  AnnouncementItem:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      content:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+  Author:
+    type: object
+    allOf:
+    - $ref: '#/definitions/AuthorInfo'
+    - $ref: '#/definitions/AuthorData'
+    - $ref: '#/definitions/time'
+  AuthorData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论数量
+        type: integer
+      fansCount:
+        description: 粉丝数量
+        type: integer
+      followerCount:
+        description: 关注数量
+        type: integer
+      postsCount:
+        description: 作品数量
+        type: integer
+  AuthorInfo:
+    type: object
+    properties:
+      avatar:
+        description: 作者头像
+        type: string
+      description:
+        description: 作者签名
+        type: string
+      id:
+        description: 作者id
+        type: integer
+      isFans:
+        description: 是否是对方的粉丝
+        type: boolean
+      name:
+        description: 作者名称
+        type: string
+      sex:
+        description: 作者性别
+        type: integer
+        format: int32
+  CaptchaDots:
+    description: 点击验证码
+    type: object
+    properties:
+      captBase64:
+        type: string
+      captKey:
+        type: string
+      captThumbBase64:
+        type: string
+  CaptchaImage:
+    description: 图形验证码
+    type: object
+    properties:
+      captchaBase64:
+        description: 验证码图片base64
+        type: string
+      captchaCode:
+        description: 验证码code
+        type: string
+      captchaId:
+        description: 验证码id
+        type: string
+  Carousel:
+    description: 幻灯片
+    type: object
+    properties:
+      image:
+        description: 图像链接
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  Category:
+    type: object
+    properties:
+      id:
+        description: 当前分类id
+        type: integer
+      name:
+        description: 当前分类名称
+        type: string
+      parentId:
+        description: 当前分类父级id
+        type: integer
+      slug:
+        description: 当前分类别名
+        type: string
+  ChannelItem:
+    type: object
+    properties:
+      banners:
+        type: array
+        items:
+          $ref: '#/definitions/ThemeBanner'
+      boxs:
+        type: array
+        items:
+          $ref: '#/definitions/ThemeBox'
+      id:
+        description: 当前区id
+        type: integer
+      name:
+        description: 当前分区名称
+        type: string
+      title:
+        description: 当前分区标题
+        type: string
+  ChannelListItem:
+    type: object
+    properties:
+      id:
+        description: 当前区id
+        type: integer
+      name:
+        description: 当前分区名称
+        type: string
+      title:
+        description: 当前分区标题
+        type: string
+  Comment:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        type: object
+        $ref: '#/definitions/Author'
+      authorId:
+        description: 当前评论作者id
+        type: integer
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/Comment'
+      content:
+        description: 评论内容
+        type: string
+      episode:
+        type: object
+        $ref: '#/definitions/Episodes'
+      id:
+        description: 当前评论id
+        type: integer
+      parentId:
+        description: 当前评论父id
+        type: integer
+      posts:
+        type: object
+        $ref: '#/definitions/Posts'
+      postsId:
+        description: 当前评论的作品id
+        type: integer
+      product:
+        type: object
+        $ref: '#/definitions/Products'
+      replyUser:
+        type: object
+        $ref: '#/definitions/Author'
+      status:
+        description: 评论状态
+        type: string
+        enum:
+        - public
+        - pedding
+      type:
+        description: 评论类型
+        type: string
+  Episode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/EpisodeInfo'
+    - $ref: '#/definitions/EpisodeData'
+  EpisodeData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      rating:
+        description: 评分人数
+        type: number
+        format: float64
+      ratingCount:
+        description: 评分人数
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  EpisodeInfo:
+    type: object
+    properties:
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      number:
+        description: 号码
+        type: string
+      overview:
+        description: 作品的正文内容
+        type: string
+      pic:
+        description: 作品封面
+        type: string
+      target:
+        description: 目标路径
+        type: string
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+  Episodes:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/EpisodesInfo'
+    - $ref: '#/definitions/EpisodesData'
+  EpisodesData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      rating:
+        description: 评分人数
+        type: number
+        format: float64
+      ratingCount:
+        description: 评分人数
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  EpisodesInfo:
+    type: object
+    properties:
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      number:
+        description: 号码
+        type: string
+      overview:
+        description: 作品的正文内容
+        type: string
+      pic:
+        description: 作品封面
+        type: string
+      products:
+        $ref: '#/definitions/Products'
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+  MallItem:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      pic:
+        type: string
+      price:
+        type: string
+      target:
+        type: string
+  OptionBoxMneu:
+    type: object
+    properties:
+      icon:
+        description: 图标
+        type: string
+      info:
+        description: 描述
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  Post:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/PostInfo'
+    - $ref: '#/definitions/PostData'
+    - $ref: '#/definitions/PostMeta'
+    - $ref: '#/definitions/PostAction'
+  PostAction:
+    type: object
+    properties:
+      isFav:
+        description: 是否已收藏
+        type: boolean
+      isStar:
+        description: 是否已点赞
+        type: boolean
+  PostData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  PostDownload:
+    type: object
+    properties:
+      downloadId:
+        description: 混淆后的id,web使用该id作为页面path
+        type: string
+      downloadPassword:
+        description: 下载密码
+        type: string
+      extractPassword:
+        description: 解压密码
+        type: string
+      name:
+        description: 下载名称
+        type: string
+      url:
+        description: 下载链接
+        type: string
+  PostImage:
+    type: object
+    properties:
+      info:
+        description: 图像名称
+        type: string
+      name:
+        description: 图像名称
+        type: string
+      urls:
+        description: 图像链接列表
+        type: array
+        items:
+          type: string
+  PostInfo:
+    type: object
+    properties:
+      author:
+        type: object
+        $ref: '#/definitions/Author'
+      authorId:
+        description: 作者id
+        type: integer
+      category:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+      content:
+        description: 作品的正文内容
+        type: string
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      originAt:
+        $ref: '#/definitions/PostOriginAt'
+      status:
+        description: 作品状态
+        type: string
+        $ref: '#/definitions/Status'
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+      type:
+        description: 作品类型
+        type: string
+  PostMeta:
+    type: object
+    properties:
+      download:
+        type: array
+        items:
+          $ref: '#/definitions/PostDownload'
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/PostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/PostMusic'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/PostVideo'
+  PostMusic:
+    type: object
+    properties:
+      info:
+        description: 音频简介
+        type: string
+      name:
+        description: 音频名称
+        type: string
+      pic:
+        description: 音频封面
+        type: string
+      url:
+        description: 音频链接
+        type: string
+  PostOriginAt:
+    description: 作品来源
+    type: string
+  PostType:
+    description: 作品的类型
+    type: string
+    enum:
+    - article
+    - video
+    - image
+    - music
+  PostVideo:
+    type: object
+    properties:
+      info:
+        description: 视频简介
+        type: string
+      name:
+        description: 视频名称
+        type: string
+      pic:
+        description: 视频封面
+        type: string
+      url:
+        description: 视频链接
+        type: string
+      videoId:
+        description: 混淆后的视频id,web使用该id作为页面path
+        type: string
+  Posts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/PostsInfo'
+    - $ref: '#/definitions/PostsData'
+  PostsData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  PostsInfo:
+    type: object
+    properties:
+      author:
+        type: object
+        $ref: '#/definitions/Author'
+      authorId:
+        description: 作者id
+        type: integer
+      category:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+      content:
+        description: 作品的正文内容
+        type: string
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      status:
+        description: 作品状态
+        type: string
+        $ref: '#/definitions/Status'
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+      type:
+        description: 作品类型
+        type: string
+        enum:
+        - article
+        - video
+        - image
+        - music
+  Product:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/ProductInfo'
+    - $ref: '#/definitions/ProductData'
+  ProductData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      rating:
+        description: 评分人数
+        type: number
+        format: float64
+      ratingCount:
+        description: 评分人数
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  ProductInfo:
+    type: object
+    properties:
+      author:
+        type: object
+        $ref: '#/definitions/Author'
+      authorId:
+        description: 作者id
+        type: integer
+      content:
+        description: 作品的正文内容
+        type: string
+      endDate:
+        description: 完结日期
+        type: string
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      startDate:
+        description: 上架日期
+        type: string
+      status:
+        description: 作品状态
+        type: string
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+      type:
+        description: 作品类型
+        type: string
+        $ref: '#/definitions/ProductType'
+  ProductType:
+    type: string
+    enum:
+    - acg
+    - tv
+    - movie
+  Products:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    - $ref: '#/definitions/ProductsInfo'
+    - $ref: '#/definitions/ProductsData'
+  ProductsData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论量
+        type: integer
+      favCount:
+        description: 收藏量
+        type: integer
+      rating:
+        description: 评分人数
+        type: number
+        format: float64
+      ratingCount:
+        description: 评分人数
+        type: integer
+      starCount:
+        description: 点赞量
+        type: integer
+      views:
+        description: 浏览量
+        type: integer
+  ProductsInfo:
+    type: object
+    properties:
+      author:
+        type: object
+        $ref: '#/definitions/Author'
+      authorId:
+        description: 作者id
+        type: integer
+      content:
+        description: 作品的正文内容
+        type: string
+      endDate:
+        description: 完结日期
+        type: string
+      episodes:
+        type: array
+        items:
+          $ref: '#/definitions/Episodes'
+      gv:
+        description: 作品的gv号
+        type: string
+      hashId:
+        description: 作品的hashid
+        type: string
+      id:
+        description: 作品的唯一id
+        type: integer
+      startDate:
+        description: 上架日期
+        type: string
+      status:
+        description: 作品状态
+        type: string
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        description: 作品封面
+        type: string
+      title:
+        description: 作品标题
+        type: string
+      type:
+        description: 作品类型
+        type: string
+        $ref: '#/definitions/ProductType'
+  ReleasePost:
+    type: object
+    properties:
+      category:
+        description: 分类
+        type: array
+        items:
+          type: integer
+      content:
+        description: 正文
+        type: string
+      download:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostDownload'
+      id:
+        description: 作品id
+        type: integer
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      manga:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        $ref: '#/definitions/PostOriginAt'
+      status:
+        type: string
+      thumbnail:
+        description: 封面
+        type: string
+      title:
+        description: 标题
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  ReleasePostDownload:
+    type: object
+    properties:
+      downloadPassword:
+        description: 下载密码
+        type: string
+      extractPassword:
+        description: 解压密码
+        type: string
+      name:
+        description: 下载名称
+        type: string
+      url:
+        description: 下载链接
+        type: string
+  ReleasePostImage:
+    type: object
+    properties:
+      name:
+        description: 图像名称
+        type: string
+      urls:
+        description: 图像链接列表
+        type: string
+  ReleasePostMusic:
+    type: object
+    properties:
+      info:
+        description: 音频简介
+        type: string
+      name:
+        description: 音频名称
+        type: string
+      pic:
+        description: 音频封面
+        type: string
+      url:
+        description: 音频链接
+        type: string
+  ReleasePostVideo:
+    type: object
+    properties:
+      info:
+        description: 视频简介
+        type: string
+      name:
+        description: 视频名称
+        type: string
+      pic:
+        description: 视频封面
+        type: string
+      url:
+        description: 视频链接
+        type: string
+  RequestActionCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/RequestCaptcha'
+    properties:
+      email:
+        type: string
+      type:
+        type: string
+        enum:
+        - login
+        - register
+        - forgetpwd
+  RequestActionForgetpwd:
+    type: object
+    allOf:
+    - $ref: '#/definitions/RequestCaptcha'
+    properties:
+      code:
+        description: 验证码
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+  RequestActionLogin:
+    type: object
+    allOf:
+    - $ref: '#/definitions/RequestCaptcha'
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+  RequestActionOauth:
+    type: object
+    properties:
+      code:
+        type: string
+      type:
+        type: string
+        enum:
+        - github
+        - google
+  RequestActionQrcode:
+    description: 轮询判断是否扫描了二维码,该接口会堵塞30s
+    type: object
+    properties:
+      state:
+        description: ResponseActionQrcode返回的state
+        type: string
+  RequestActionRegister:
+    type: object
+    allOf:
+    - $ref: '#/definitions/RequestCaptcha'
+    properties:
+      code:
+        description: 验证码
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+  RequestActionScan:
+    type: object
+    properties:
+      type:
+        type: string
+      value:
+        type: string
+  RequestAuthor:
+    type: object
+    properties:
+      fans:
+        description: 是否成为对方的粉丝
+        type: boolean
+        x-nullable: true
+  RequestAuthorFans:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+  RequestAuthorFollower:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+  RequestCaptcha:
+    description: 提交的验证码数据
+    type: object
+    properties:
+      captcha:
+        description: 图形验证码
+        type: object
+        x-nullable: true
+        $ref: '#/definitions/RequestCaptchaImage'
+      captchaToken:
+        description: token 免验证
+        type: string
+        x-nullable: true
+      dots:
+        description: 点击验证码
+        type: object
+        x-nullable: true
+        $ref: '#/definitions/RequestCaptchaDots'
+  RequestCaptchaDots:
+    description: 提交的点击验证码
+    type: object
+    properties:
+      captKey:
+        type: string
+      values:
+        type: array
+        items:
+          type: string
+  RequestCaptchaImage:
+    description: 提交的图形验证码
+    type: object
+    properties:
+      captchaCode:
+        description: 验证码code
+        type: string
+      captchaId:
+        description: 验证码id
+        type: string
+  RequestComments:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      episodeId:
+        description: 剧集id
+        type: integer
+        x-nullable: true
+      parentId:
+        description: 父级id
+        type: integer
+        x-nullable: true
+      postsId:
+        description: 关联的作品id
+        type: integer
+        x-nullable: true
+      productId:
+        description: 关联的内容id
+        type: integer
+        x-nullable: true
+  RequestEpisodes:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      ids:
+        description: 作品的id
+        type: array
+        items:
+          type: integer
+        x-nullable: true
+  RequestPost:
+    type: object
+    properties:
+      fav:
+        description: 是否收藏该作品
+        type: boolean
+        x-nullable: true
+      star:
+        description: 是否点赞该作品
+        type: boolean
+        x-nullable: true
+  RequestPosts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      categoryId:
+        description: 分类id
+        type: integer
+        x-nullable: true
+      ids:
+        description: 作品的id
+        type: array
+        items:
+          type: integer
+        x-nullable: true
+      type:
+        description: 作品类型
+        type: string
+        enum:
+        - article
+        - video
+        - image
+        - music
+        x-nullable: true
+  RequestProducts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      ids:
+        description: 作品的id
+        type: array
+        items:
+          type: integer
+        x-nullable: true
+  RequestReleaseCommentCreate:
+    type: object
+    properties:
+      content:
+        description: 正文内容
+        type: string
+      episodeId:
+        description: 评论的剧集id
+        type: integer
+        x-nullable: true
+      parentId:
+        description: 要回复的评论id
+        type: integer
+        x-nullable: true
+      postsId:
+        description: 评论的作品id
+        type: integer
+        x-nullable: true
+      productId:
+        description: 评论的内容id
+        type: integer
+        x-nullable: true
+      replyUserId:
+        description: 回复的用户id
+        type: integer
+        x-nullable: true
+  RequestReleasePostCreate:
+    type: object
+    properties:
+      category:
+        description: 分类
+        type: array
+        items:
+          type: integer
+      content:
+        description: 正文
+        type: string
+      download:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostDownload'
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      manga:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        $ref: '#/definitions/PostOriginAt'
+      thumbnail:
+        description: 封面
+        type: string
+      title:
+        description: 标题
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  RequestReleasePostUpdate:
+    type: object
+    properties:
+      category:
+        description: 分类
+        type: array
+        items:
+          type: integer
+      content:
+        description: 正文
+        type: string
+      download:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostDownload'
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      manga:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        $ref: '#/definitions/PostOriginAt'
+      thumbnail:
+        description: 封面
+        type: string
+      title:
+        description: 标题
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  RequestSearch:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      keyword:
+        description: 搜索的关键词
+        type: string
+      model:
+        description: 搜索的类型
+        type: string
+        x-nullable: true
+  RequestStaticBfs:
+    description: 提交的验证码数据
+    type: object
+    $ref: '#/definitions/StaticBfs'
+  RequestThemePageCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/ThemePageCode'
+  RequestUserComments:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      parentId:
+        description: 父级id
+        type: integer
+        x-nullable: true
+      postsId:
+        description: 关联的作品id
+        type: integer
+        x-nullable: true
+  RequestUserFav:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+  RequestUserInfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      birthday:
+        description: 用户生日，如 2022-02-02
+        type: string
+        x-nullable: true
+      description:
+        description: 用户签名
+        type: string
+        x-nullable: true
+      name:
+        description: 用户名
+        type: string
+        x-nullable: true
+      sex:
+        description: 用户性别
+        type: integer
+        format: int32
+        x-nullable: true
+  RequestUserNotices:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      type:
+        description: 查询的消息类型
+        type: array
+        items:
+          type: string
+          enum:
+          - comments
+          - reply
+  RequestUserPosts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      categoryId:
+        description: 分类id
+        type: integer
+        x-nullable: true
+      status:
+        description: 作品状态
+        type: string
+        enum:
+        - pedding
+        - public
+        x-nullable: true
+      type:
+        description: 作品类型
+        type: string
+        enum:
+        - article
+        - video
+        - image
+        - music
+        x-nullable: true
+  ResponseActionCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+  ResponseActionForgetpwd:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+  ResponseActionLogin:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          token:
+            type: string
+          user:
+            $ref: '#/definitions/User'
+  ResponseActionOauth:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        $ref: '#/definitions/ActionOauth'
+  ResponseActionQrcode:
+    description: 二维码
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          exp:
+            description: 多少秒后过期
+            type: integer
+          state:
+            type: string
+          type:
+            type: string
+  ResponseActionRegister:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          token:
+            type: string
+          user:
+            $ref: '#/definitions/User'
+  ResponseActionScan:
+    type: object
+    properties:
+      type:
+        type: string
+      value:
+        type: string
+  ResponseAnnouncement:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          announcement:
+            type: object
+            $ref: '#/definitions/AnnouncementItem'
+  ResponseAnnouncementList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          announcements:
+            type: array
+            items:
+              $ref: '#/definitions/AnnouncementItem'
+          total:
+            type: integer
+  ResponseAuthor:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          author:
+            type: object
+            $ref: '#/definitions/Author'
+  ResponseAuthorFans:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          total:
+            description: 总数量
+            type: integer
+          users:
+            type: array
+            items:
+              $ref: '#/definitions/Author'
+  ResponseAuthorFollower:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          total:
+            description: 总数量
+            type: integer
+          users:
+            type: array
+            items:
+              $ref: '#/definitions/Author'
+  ResponseCaptcha:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          captcha:
+            description: 图形验证码
+            $ref: '#/definitions/CaptchaImage'
+          dots:
+            description: 点击验证码
+            $ref: '#/definitions/CaptchaDots'
+          enable:
+            description: 是否需要验证码
+            type: boolean
+          token:
+            description: 使用该token可以免验证码
+            type: string
+          type:
+            description: 验证码类型
+            type: string
+  ResponseCategory:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          category:
+            type: object
+            $ref: '#/definitions/Category'
+  ResponseCategorys:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          categorys:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+  ResponseChannel:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          channel:
+            type: object
+            $ref: '#/definitions/ChannelItem'
+  ResponseChannels:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          categorys:
+            type: array
+            items:
+              $ref: '#/definitions/ChannelListItem'
+  ResponseComments:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          comments:
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+          total:
+            description: 总数量
+            type: integer
+  ResponseEpisode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episodes:
+            type: array
+            items:
+              $ref: '#/definitions/Episode'
+          product:
+            type: object
+            $ref: '#/definitions/Product'
+          seasions:
+            description: 相关季
+            type: array
+            items:
+              $ref: '#/definitions/Products'
+          similars:
+            description: 相似的
+            type: array
+            items:
+              $ref: '#/definitions/Products'
+  ResponseEpisodes:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episodes:
+            type: array
+            items:
+              $ref: '#/definitions/Episodes'
+          total:
+            type: integer
+  ResponseGV:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          authorId:
+            type: integer
+          episodeId:
+            type: integer
+          postsId:
+            type: integer
+          productId:
+            type: integer
+  ResponseMallList:
+    description: 商品列表
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          malls:
+            type: array
+            items:
+              $ref: '#/definitions/MallItem'
+          total:
+            description: 总数量
+            type: integer
+  ResponsePost:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: object
+            $ref: '#/definitions/Post'
+  ResponsePostDownload:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          download:
+            type: array
+            items:
+              $ref: '#/definitions/PostDownload'
+          posts:
+            type: object
+            $ref: '#/definitions/Post'
+  ResponsePostImage:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          images:
+            type: array
+            items:
+              $ref: '#/definitions/PostImage'
+  ResponsePostMusic:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          music:
+            type: array
+            items:
+              $ref: '#/definitions/PostMusic'
+  ResponsePostVideo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          video:
+            type: array
+            items:
+              $ref: '#/definitions/PostVideo'
+  ResponsePosts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: array
+            items:
+              $ref: '#/definitions/Posts'
+          total:
+            type: integer
+  ResponseProduct:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episodes:
+            type: array
+            items:
+              $ref: '#/definitions/Episodes'
+          product:
+            type: object
+            $ref: '#/definitions/Product'
+          seasions:
+            description: 相关季
+            type: array
+            items:
+              $ref: '#/definitions/Products'
+          similars:
+            description: 相似的
+            type: array
+            items:
+              $ref: '#/definitions/Products'
+  ResponseProducts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          products:
+            type: array
+            items:
+              $ref: '#/definitions/Products'
+          total:
+            type: integer
+  ResponseReleaseComment:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          comment:
+            type: object
+            $ref: '#/definitions/Comment'
+  ResponseReleaseCommentDELETE:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+  ResponseReleasePost:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          post:
+            type: object
+            $ref: '#/definitions/ReleasePost'
+  ResponseReleasePostUpdate:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          post:
+            type: object
+            $ref: '#/definitions/ReleasePost'
+  ResponseSearch:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          entries:
+            type: array
+            items:
+              $ref: '#/definitions/SearchItem'
+          total:
+            type: integer
+  ResponseSearchPopular:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: string
+  ResponseStaticBfs:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        $ref: '#/definitions/StaticBfs'
+  ResponseThemeBanner:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          banners:
+            type: array
+            items:
+              $ref: '#/definitions/ThemeBanner'
+          enable:
+            type: boolean
+  ResponseThemeGoogleAnalytics:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          GoogleAnalytics:
+            type: object
+            $ref: '#/definitions/ThemeGoogleAnalytics'
+  ResponseThemeMenus:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          menus:
+            type: array
+            items:
+              $ref: '#/definitions/ThemeMenu'
+  ResponseThemePageCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        $ref: '#/definitions/ThemePageCode'
+  ResponseThemeRegister:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          register:
+            type: object
+            $ref: '#/definitions/ThemeRegister'
+  ResponseThemeRelease:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          release:
+            type: object
+            $ref: '#/definitions/ThemeRelease'
+  ResponseThemeRouter:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          page:
+            type: object
+            $ref: '#/definitions/ThemeRouterPage'
+  ResponseThemeSiteinfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          siteinfo:
+            type: object
+            $ref: '#/definitions/ThemeSiteinfo'
+  ResponseUploadImage:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        additionalProperties:
+          type: string
+  ResponseUserAnalytics:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          analytics:
+            type: array
+            items:
+              $ref: '#/definitions/UserAnalytics'
+  ResponseUserAvatar:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          avatar:
+            type: string
+  ResponseUserComments:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          comments:
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+          total:
+            description: 总数量
+            type: integer
+  ResponseUserFav:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: array
+            items:
+              $ref: '#/definitions/Posts'
+          total:
+            type: integer
+  ResponseUserInfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          user:
+            $ref: '#/definitions/User'
+  ResponseUserNotices:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          notices:
+            type: array
+            items:
+              $ref: '#/definitions/UserNotice'
+          total:
+            type: integer
+  ResponseUserPosts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: array
+            items:
+              $ref: '#/definitions/Posts'
+          total:
+            type: integer
+  SearchItem:
+    description: 搜索结果集
+    type: object
+    properties:
+      date:
+        description: 创建日期
+        type: string
+      gv:
+        description: 入库的gv号
+        type: string
+      id:
+        type: integer
+      model:
+        type: string
+        enum:
+        - posts
+        - product
+      status:
+        description: 状态
+        type: string
+        $ref: '#/definitions/Status'
+      thumbnail:
+        type: string
+      title:
+        type: string
+      views:
+        description: 浏览量
+        type: integer
+  Sex:
+    description: 用户的性别
+    type: integer
+    format: int32
+    enum:
+    - 0
+    - 1
+    - 2
+  StaticBfs:
+    type: object
+    properties:
+      avatar:
+        description: 默认头像地址
+        type: string
+      banner:
+        description: 横幅图片地址
+        type: string
+      favicon:
+        description: 网站图标地址
+        type: string
+      logo:
+        description: LOGO地址
+        type: string
+      thumbnail:
+        description: 略缩图地址
+        type: string
+  Status:
+    description: 状态
+    type: string
+    enum:
+    - pedding
+    - public
+  ThemeBanner:
+    description: 幻灯片
+    type: object
+    properties:
+      image:
+        description: 图像链接
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  ThemeBox:
+    type: object
+    properties:
+      className:
+        description: 自定义的className
+        type: string
+      content:
+        type: object
+        $ref: '#/definitions/ThemeBoxContent'
+      html:
+        description: 模块的广告html代码
+        type: string
+      icon:
+        description: 模块图标
+        type: string
+      title:
+        description: 模块标题
+        type: string
+      widget:
+        type: object
+        $ref: '#/definitions/ThemeBoxWidget'
+  ThemeBoxCarousel:
+    type: object
+    properties:
+      carousels:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+      recoms:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+  ThemeBoxContent:
+    type: object
+    properties:
+      carousel:
+        type: object
+        $ref: '#/definitions/ThemeBoxCarousel'
+      episodes:
+        type: object
+        $ref: '#/definitions/ThemeBoxEpisodes'
+      menus:
+        type: array
+        items:
+          $ref: '#/definitions/OptionBoxMneu'
+      posts:
+        type: object
+        $ref: '#/definitions/ThemeBoxPosts'
+      product:
+        type: object
+        $ref: '#/definitions/ThemeBoxProduct'
+      type:
+        description: 模块类型
+        type: string
+        enum:
+        - recom
+        - carousel
+        - menus
+        - posts
+        - product
+        - episodes
+  ThemeBoxEpisodes:
+    type: object
+    properties:
+      episodes:
+        type: array
+        items:
+          $ref: '#/definitions/Episodes'
+      recoms:
+        type: array
+        items:
+          $ref: '#/definitions/Episodes'
+  ThemeBoxPosts:
+    type: object
+    properties:
+      posts:
+        type: array
+        items:
+          $ref: '#/definitions/Posts'
+      recoms:
+        type: array
+        items:
+          $ref: '#/definitions/Posts'
+  ThemeBoxProduct:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Products'
+      recoms:
+        type: array
+        items:
+          $ref: '#/definitions/Products'
+  ThemeBoxWidget:
+    type: object
+    properties:
+      carousels:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+      posts:
+        type: array
+        items:
+          $ref: '#/definitions/Posts'
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Products'
+      title:
+        description: 模块标题
+        type: string
+      type:
+        type: string
+        enum:
+        - product
+        - posts
+        - carousel
+  ThemeGoogleAnalytics:
+    type: object
+    properties:
+      id:
+        description: 谷歌统计的id
+        type: string
+  ThemeMenu:
+    type: object
+    properties:
+      category:
+        type: integer
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/ThemeMenu'
+      icon:
+        type: string
+      name:
+        type: string
+      target:
+        type: string
+  ThemePageCode:
+    type: object
+    additionalProperties:
+      type: string
+  ThemeRegister:
+    type: object
+    properties:
+      allow:
+        description: 是否允许注册
+        type: boolean
+      model:
+        description: 注册模式
+        type: number
+        format: int32
+  ThemeRelease:
+    type: object
+    properties:
+      comment:
+        description: 是否允许评论
+        type: boolean
+      posts:
+        description: 是否允许投稿
+        type: boolean
+  ThemeRouterPage:
+    type: object
+    properties:
+      author:
+        description: 作者页面
+        type: string
+      category:
+        description: 分类页面
+        type: string
+      episode:
+        description: 作品页面
+        type: string
+      posts:
+        description: 作品页面
+        type: string
+      product:
+        description: 作品页面
+        type: string
+      redirect:
+        description: 是否使用错误页面
+        type: boolean
+  ThemeSiteinfo:
+    type: object
+    properties:
+      description:
+        description: 站点描述
+        type: string
+      keywords:
+        description: 站点关键词
+        type: string
+      sitedescription:
+        description: 站点副标题
+        type: string
+      sitename:
+        description: 站点名称
+        type: string
+      siteurl:
+        description: 站点链接
+        type: string
+  User:
+    type: object
+    allOf:
+    - $ref: '#/definitions/UserInfo'
+    - $ref: '#/definitions/UserData'
+    - $ref: '#/definitions/time'
+  UserAnalytics:
+    type: object
+    properties:
+      name:
+        type: string
+      today:
+        type: object
+      value:
+        type: object
+      yesterday:
+        type: object
+  UserData:
+    type: object
+    properties:
+      commentsCount:
+        description: 评论数量
+        type: integer
+      fansCount:
+        description: 粉丝数量
+        type: integer
+      followerCount:
+        description: 关注数量
+        type: integer
+      notice:
+        description: 消息数量
+        type: integer
+      postsCount:
+        description: 作品数量
+        type: integer
+  UserInfo:
+    type: object
+    properties:
+      avatar:
+        description: 当前用户头像
+        type: string
+      birthday:
+        description: 当前用户生日
+        type: string
+      description:
+        description: 当前用户签名
+        type: string
+      email:
+        description: 当前用户邮箱
+        type: string
+      id:
+        description: 当前用户id
+        type: integer
+      name:
+        description: 当前用户名称
+        type: string
+      phone:
+        description: 当前用户手机
+        type: string
+      sex:
+        description: 当前用户性别
+        type: integer
+        format: int32
+      uid:
+        description: 当前用户uuid
+        type: string
+  UserNotice:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      comment:
+        description: 关联的评论
+        type: object
+        $ref: '#/definitions/Comment'
+      fromUser:
+        description: 来自用户
+        type: object
+        $ref: '#/definitions/Author'
+      id:
+        description: 消息的id
+        type: integer
+      posts:
+        description: 关联的作品
+        type: object
+        $ref: '#/definitions/Posts'
+      reply:
+        description: 回复的评论
+        type: object
+        $ref: '#/definitions/Comment'
+      text:
+        description: 消息文本
+        type: string
+      toUser:
+        description: 接受的用户
+        type: object
+        $ref: '#/definitions/Author'
+      type:
+        description: 消息的类型
+        type: string
+        enum:
+        - comment
+        - reply
+  response:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+  responseJson:
+    type: object
+    properties:
+      message:
+        description: 具体的内容
+        type: string
+        example: 登录错误，请重新登录
+      scope:
+        description: 错误代码
+        type: integer
+      success:
+        description: true 表示 OK，其它表示错误。具体得看接口scope错误码
+        type: boolean
+        example: false
+  scope:
+    type: object
+    properties:
+      endDate:
+        description: 结束时间
+        type: string
+        x-nullable: true
+      limit:
+        description: 查询数量,最大不能超过100
+        type: integer
+        x-nullable: true
+      offset:
+        description: 偏移数量
+        type: integer
+        x-nullable: true
+      order:
+        description: 排序规则,根据 条件来排序
+        type: string
+        x-nullable: true
+      sort:
+        description: 排序,默认最新desc
+        type: string
+        enum:
+        - desc
+        - asc
+        - rand
+        x-nullable: true
+      startDate:
+        description: 开始时间
+        type: string
+        x-nullable: true
+  time:
+    type: object
+    properties:
+      createdDate:
+        description: 创建日期
+        type: string
+      updateDate:
+        description: 更新日期
+        type: string

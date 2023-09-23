@@ -1,0 +1,3605 @@
+schemes:
+- http
+swagger: "2.0"
+info:
+  description: One API Admin
+  title: One API Admin
+  version: 3.0.0
+basePath: /api/admin
+paths:
+  /action/login:
+    post:
+      produces:
+      - application/json
+      tags:
+      - action
+      summary: 登录系统用户
+      operationId: postActionLogin
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminActionLogin'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminActionLogin'
+  /analytics/app:
+    get:
+      tags:
+      - analytics
+      summary: 请求数据
+      operationId: getAnalyticsApp
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnalyticsApp'
+  /analytics/data:
+    get:
+      tags:
+      - analytics
+      summary: 统计数据
+      operationId: getAnalyticsData
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnalyticsData'
+  /analytics/events:
+    get:
+      tags:
+      - analytics
+      summary: 统计事件
+      operationId: getAnalyticsEvents
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnalyticsEvents'
+  /analytics/record:
+    get:
+      tags:
+      - analytics
+      summary: 请求数据
+      operationId: getAnalyticsRecord
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnalyticsRecord'
+  /announcement/create:
+    post:
+      tags:
+      - announcement
+      summary: 创建公告
+      operationId: postAnnouncementCreate
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminAnnouncementCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnnouncement'
+  /announcement/list:
+    get:
+      tags:
+      - announcement
+      summary: 全部公告
+      operationId: getAnnouncementList
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminAnnouncementList'
+  /announcement/{id}:
+    delete:
+      tags:
+      - announcement
+      summary: 删除公告
+      operationId: deleteAnnouncementId
+      parameters:
+      - type: integer
+        description: Announcement ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /captcha:
+    get:
+      description: 获取验证码
+      tags:
+      - captcha
+      summary: 验证码
+      operationId: getCaptcha
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseCaptcha'
+  /category:
+    post:
+      tags:
+      - category
+      summary: 添加分类
+      operationId: postCategory
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCategoryAdd'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminCategory'
+  /category/{id}:
+    get:
+      tags:
+      - category
+      summary: 查询某个分类
+      operationId: getCategoryId
+      parameters:
+      - type: integer
+        description: Category ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminCategory'
+    post:
+      tags:
+      - category
+      summary: 更新某个分类
+      operationId: postCategoryId
+      parameters:
+      - type: integer
+        description: Category ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCategoryUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminCategory'
+    delete:
+      tags:
+      - category
+      summary: 删除某个分类
+      operationId: deleteCategoryId
+      parameters:
+      - type: integer
+        description: Category ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /categorys:
+    get:
+      tags:
+      - categorys
+      summary: 查询所有分类
+      operationId: getCategorys
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminCategoryList'
+  /channel:
+    post:
+      tags:
+      - channel
+      summary: 添加分区
+      operationId: postChannel
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminChannelCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminChannel'
+  /channel/{id}:
+    get:
+      tags:
+      - channel
+      summary: 查询某个分区
+      operationId: getChannelId
+      parameters:
+      - type: integer
+        description: Chanel ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminChannel'
+    post:
+      tags:
+      - channel
+      summary: 更新某个分区
+      operationId: postChannelId
+      parameters:
+      - type: integer
+        description: Chanel ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminChannelUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminChannel'
+    delete:
+      tags:
+      - channel
+      summary: 删除某个分区
+      operationId: deleteChannelId
+      parameters:
+      - type: integer
+        description: Channel ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /channel/{id}/cache:
+    post:
+      tags:
+      - channel
+      summary: 清空某个分区缓存
+      operationId: postChannelIdCache
+      parameters:
+      - type: integer
+        description: Chanel ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /channels:
+    get:
+      tags:
+      - channels
+      summary: 查询所有分区
+      operationId: getChannels
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminChannelList'
+  /comment/{id}:
+    get:
+      tags:
+      - comment
+      summary: 查询某个评论
+      operationId: getCommentId
+      parameters:
+      - type: integer
+        description: Comment ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminComment'
+    post:
+      tags:
+      - comment
+      summary: 更新某个评论
+      operationId: postCommentId
+      parameters:
+      - type: integer
+        description: Comment ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCommentUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminComment'
+    delete:
+      tags:
+      - comment
+      summary: 删除某个评论
+      operationId: deleteComment
+      parameters:
+      - type: integer
+        description: Comment ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /comments/list:
+    post:
+      tags:
+      - comments
+      summary: 评论列表
+      operationId: postCommentsList
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCommentsList'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminCommentsList'
+  /comments/recover:
+    post:
+      tags:
+      - comments
+      summary: 批量恢复评论
+      operationId: postCommentsRecover
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCommentsRecover'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /comments/status:
+    post:
+      tags:
+      - comments
+      summary: 批量更新评论状态
+      operationId: postCommentsStatus
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminCommentsStatus'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /episode/{id}:
+    get:
+      tags:
+      - episode
+      summary: 剧集
+      operationId: getEpisode
+      parameters:
+      - type: integer
+        description: Episode ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminEpisode'
+    post:
+      tags:
+      - episode
+      summary: 更新剧集
+      operationId: postEpisodeUpdate
+      parameters:
+      - type: integer
+        description: Episode ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminEpisodeUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminEpisodeUpdate'
+  /episodes/creates:
+    post:
+      tags:
+      - episodes
+      summary: 批量创建剧集
+      operationId: postEpisodesCreates
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminEpisodesCreates'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminEpisodesCreates'
+  /episodes/deletes:
+    post:
+      tags:
+      - episodes
+      summary: 剧集列表
+      operationId: postEpisodesDeletes
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminEpisodesDeletes'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminEpisodesDeletes'
+  /episodes/list:
+    post:
+      tags:
+      - episodes
+      summary: 剧集列表
+      operationId: postEpisodesList
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminEpisodesList'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminEpisodesList'
+  /mall/create:
+    post:
+      tags:
+      - mall
+      summary: 创建商品
+      operationId: postMallCreate
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminMallCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminMall'
+  /mall/list:
+    get:
+      tags:
+      - mall
+      summary: 全部商品
+      operationId: getMallList
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminMallList'
+  /mall/{id}:
+    post:
+      tags:
+      - mall
+      summary: 更新商品
+      operationId: postMallId
+      parameters:
+      - type: integer
+        description: Mall ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminMallCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminMall'
+    delete:
+      tags:
+      - mall
+      summary: 删除品
+      operationId: deleteMallId
+      parameters:
+      - type: integer
+        description: Mall ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /option/GoogleAnalytics:
+    get:
+      tags:
+      - option
+      summary: 谷歌统计
+      operationId: getOptionGoogleAnalytics
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionGoogleAnalytics'
+    post:
+      tags:
+      - option
+      summary: 谷歌统计
+      operationId: postOptionGoogleAnalytics
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionGoogleAnalytics'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionGoogleAnalytics'
+  /option/email:
+    get:
+      tags:
+      - option
+      summary: 邮箱配置
+      operationId: getOptionEmail
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionEmail'
+    post:
+      tags:
+      - option
+      summary: 邮箱配置
+      operationId: postOptionEmail
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionEmail'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionEmail'
+  /option/menus:
+    get:
+      tags:
+      - option
+      summary: 导航菜单
+      operationId: getOptionMenus
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionMenus'
+    post:
+      tags:
+      - option
+      summary: 导航菜单
+      operationId: postOptionMenus
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionMenus'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionMenus'
+  /option/oauth:
+    get:
+      tags:
+      - option
+      summary: 第三方授权
+      operationId: getOptionOauth
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionOauth'
+    post:
+      tags:
+      - option
+      summary: 第三方授权
+      operationId: postOptionOauth
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionOauth'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionOauth'
+  /option/pageCode:
+    get:
+      tags:
+      - option
+      summary: 页面html代码
+      operationId: getOptionPageCode
+      parameters:
+      - enum:
+        - blackboard
+        - protocal
+        - footer
+        type: string
+        name: name
+        in: query
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionPageCode'
+    post:
+      tags:
+      - option
+      summary: 页面html代码
+      operationId: postOptionPageCode
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionPageCode'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionPageCode'
+  /option/register:
+    get:
+      tags:
+      - option
+      summary: 是否允许网站用户注册
+      operationId: getOptionRegister
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRegister'
+    post:
+      tags:
+      - option
+      summary: 是否允许网站用户注册
+      operationId: postOptionRegister
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionRegister'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRegister'
+  /option/release:
+    get:
+      tags:
+      - option
+      summary: 是否允许网站用户投稿
+      operationId: getOptionRelease
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRelease'
+    post:
+      tags:
+      - option
+      summary: 是否允许网站用户投稿
+      operationId: postOptionRelease
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionRelease'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRelease'
+  /option/router:
+    get:
+      tags:
+      - option
+      summary: 页面自定义路由
+      operationId: getOptionRouter
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRouter'
+    post:
+      tags:
+      - option
+      summary: 页面自定义路由
+      operationId: postOptionRouter
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionRouter'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionRouter'
+  /option/siteinfo:
+    get:
+      tags:
+      - option
+      summary: 网站信息
+      operationId: getOptionSiteinfo
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionSiteinfo'
+    post:
+      tags:
+      - option
+      summary: 网站信息
+      operationId: postOptionSiteinfo
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestOptionSiteinfo'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseOptionSiteinfo'
+  /option/static/bfs:
+    get:
+      tags:
+      - option
+      summary: 静态资源
+      operationId: getOptionStaticBfs
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseStaticBfs'
+    post:
+      tags:
+      - option
+      summary: 页面自定义路由
+      operationId: postOptionStaticBfs
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestStaticBfs'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseStaticBfs'
+  /post/{id}:
+    get:
+      tags:
+      - post
+      summary: 查询某个作品
+      operationId: getPostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminPost'
+    post:
+      tags:
+      - post
+      summary: 更新某个作品
+      operationId: postPostsId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminPostUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminPost'
+    delete:
+      tags:
+      - post
+      summary: 删除某个作品
+      operationId: deletePostId
+      parameters:
+      - type: integer
+        description: Posts ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /posts/create:
+    post:
+      tags:
+      - posts
+      summary: 创建作品
+      operationId: postPostsCreate
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminPostsCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminPost'
+  /posts/list:
+    post:
+      tags:
+      - posts
+      summary: 作品列表
+      operationId: postPostsList
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminPostsList'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminPostsList'
+  /posts/recover:
+    post:
+      tags:
+      - posts
+      summary: 批量恢复作品
+      operationId: postPostsRecover
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminPostsRecover'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /posts/status:
+    post:
+      tags:
+      - posts
+      summary: 批量更新作品状态
+      operationId: postPostsStatus
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminPostsStatus'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /product/create:
+    post:
+      tags:
+      - product
+      summary: 创建内容
+      operationId: postProductCreate
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminProduct'
+  /product/{id}:
+    get:
+      tags:
+      - product
+      summary: 查询某个内容
+      operationId: getProductId
+      parameters:
+      - type: integer
+        description: Product ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminProduct'
+    post:
+      tags:
+      - product
+      summary: 更新某个内容
+      operationId: postProductId
+      parameters:
+      - type: integer
+        description: Product ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminProduct'
+    delete:
+      tags:
+      - product
+      summary: 删除某个内容
+      operationId: deleteProductId
+      parameters:
+      - type: integer
+        description: Product ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /products/list:
+    post:
+      tags:
+      - products
+      summary: 内容列表
+      operationId: postProductsList
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductsList'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminProductsList'
+  /products/recover:
+    post:
+      tags:
+      - products
+      summary: 批量恢复内容
+      operationId: postProductsRecover
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductsRecover'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /products/serie:
+    post:
+      tags:
+      - products
+      summary: 批量更新内容系列
+      operationId: postProductsSerie
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductsSerie'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /products/status:
+    post:
+      tags:
+      - products
+      summary: 批量更新内容状态
+      operationId: postProductsStatus
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminProductsStatus'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /system/user/info:
+    get:
+      tags:
+      - system
+      summary: 当前系统用户
+      operationId: getSystemUserinfo
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSystemUserInfo'
+    post:
+      produces:
+      - application/json
+      tags:
+      - system
+      summary: 系统用户更新资料
+      operationId: postSystemUserinfo
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestSystemUserInfo'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /system/user/outlogin:
+    post:
+      tags:
+      - system
+      summary: 注销登录
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /system/user/{id}:
+    get:
+      tags:
+      - system
+      summary: 系统用户资料
+      operationId: getSystemUser
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSystemUsersInfo'
+    post:
+      produces:
+      - application/json
+      tags:
+      - system
+      summary: 更新系统用户
+      operationId: updateSystemUser
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestSystemUserUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /system/users:
+    get:
+      tags:
+      - system
+      summary: 当前系统用户列表
+      operationId: getSystemUserList
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSystemUsersList'
+    post:
+      produces:
+      - application/json
+      tags:
+      - system
+      summary: 添加系统用户
+      operationId: addSystemUser
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestSystemUsersAdd'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /system/users/{id}:
+    get:
+      tags:
+      - system
+      summary: 当前系统用户
+      operationId: getSystemUsersId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSystemUsersInfo'
+    post:
+      produces:
+      - application/json
+      tags:
+      - system
+      summary: 更新系统用户
+      operationId: postSystemUsersId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestSystemUsersUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSystemUsersInfo'
+    delete:
+      produces:
+      - application/json
+      tags:
+      - system
+      summary: 删除系统用户
+      operationId: deleteSystemUsersId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /tmdb/search:
+    post:
+      tags:
+      - tmdb
+      summary: 云搜索作品
+      operationId: postTmdbSearch
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestTmdbSearch'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseTmdbSearch'
+  /user:
+    post:
+      tags:
+      - user
+      summary: 创建用户
+      operationId: postUser
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminUserCreate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminUser'
+  /user/{id}:
+    get:
+      tags:
+      - user
+      summary: 查询某个用户
+      operationId: getUserId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminUser'
+    post:
+      tags:
+      - user
+      summary: 更新用户
+      operationId: postUserId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminUserUpdate'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminUser'
+    delete:
+      tags:
+      - user
+      summary: 删除某个用户
+      operationId: deleteUserId
+      parameters:
+      - type: integer
+        description: User ID
+        name: id
+        in: path
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responseJson'
+  /users/list:
+    post:
+      tags:
+      - users
+      summary: 用户列表
+      operationId: postUsersList
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RequestAdminUsersList'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseAdminUsersList'
+definitions:
+  AdminAnalyticsAppItem:
+    type: object
+    properties:
+      content:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+  AdminAnalyticsEventItem:
+    type: object
+    properties:
+      content:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+  AdminAnalyticsRecord:
+    type: object
+    properties:
+      assets:
+        type: integer
+      ban:
+        type: integer
+      request:
+        type: integer
+      views:
+        type: integer
+  AdminAnalyticsTimeline:
+    type: object
+    properties:
+      names:
+        type: array
+        items:
+          type: string
+      values:
+        description: 时间轴的数据
+        type: object
+        $ref: '#/definitions/AdminAnalyticsTimelineValue'
+  AdminAnalyticsTimelineValue:
+    description: 统计分析结构
+    type: object
+    properties:
+      comments:
+        type: array
+        items:
+          type: integer
+      posts:
+        type: array
+        items:
+          type: integer
+      users:
+        type: array
+        items:
+          type: integer
+  AdminAnalyticsTotal:
+    type: object
+    properties:
+      comments:
+        type: integer
+      download:
+        type: integer
+      posts:
+        type: integer
+      sign:
+        type: integer
+      users:
+        type: integer
+      video:
+        type: integer
+      views:
+        type: integer
+  AdminCategory:
+    type: object
+    properties:
+      id:
+        description: 当前分类id
+        type: integer
+      name:
+        description: 当前分类名称
+        type: string
+      parentId:
+        description: 当前分类父级id
+        type: integer
+      slug:
+        description: 当前分类别名
+        type: string
+  AdminChannel:
+    type: object
+    properties:
+      boxs:
+        type: array
+        items:
+          $ref: '#/definitions/OptionBox'
+      enable:
+        description: 是否启用
+        type: boolean
+      id:
+        description: 当前分类id
+        type: integer
+      name:
+        description: 当前分区名称
+        type: string
+      title:
+        description: 当前分区标题
+        type: string
+  AdminComment:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      authorId:
+        type: integer
+      content:
+        type: string
+      id:
+        type: integer
+      parentId:
+        type: integer
+      postsId:
+        type: integer
+      replyUserId:
+        type: integer
+      status:
+        $ref: '#/definitions/Status'
+  AdminComments:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        $ref: '#/definitions/AdminUsers'
+      authorId:
+        type: integer
+      content:
+        type: string
+      episode:
+        type: object
+        $ref: '#/definitions/AdminEpisode'
+      id:
+        type: integer
+      parentId:
+        type: integer
+      posts:
+        $ref: '#/definitions/AdminPosts'
+      postsId:
+        type: integer
+      replyUser:
+        $ref: '#/definitions/AdminUsers'
+      status:
+        $ref: '#/definitions/Status'
+  AdminEpisode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      id:
+        type: integer
+      number:
+        description: 号码
+        type: string
+      order:
+        type: number
+        format: float64
+      overview:
+        type: string
+      pic:
+        type: string
+      product:
+        $ref: '#/definitions/AdminProducts'
+      productId:
+        type: integer
+      target:
+        type: string
+      title:
+        type: string
+      vip:
+        type: boolean
+  AdminEpisodeCreate:
+    type: object
+    properties:
+      number:
+        description: 号码
+        type: string
+      order:
+        type: number
+        format: float64
+      overview:
+        type: string
+      pic:
+        type: string
+      productId:
+        type: integer
+      target:
+        type: string
+      title:
+        type: string
+      vip:
+        type: boolean
+  AdminEpisodes:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      gv:
+        description: 作品的gv号
+        type: string
+      id:
+        type: integer
+      number:
+        description: 号码
+        type: string
+      order:
+        type: number
+        format: float64
+      overview:
+        type: string
+      pic:
+        type: string
+      product:
+        $ref: '#/definitions/AdminProducts'
+      productId:
+        type: integer
+      target:
+        type: string
+      title:
+        type: string
+      vip:
+        type: boolean
+  AdminMallItem:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      pic:
+        type: string
+      price:
+        type: string
+      target:
+        type: string
+  AdminPost:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        $ref: '#/definitions/AdminUsers'
+      authorId:
+        type: integer
+      category:
+        type: array
+        items:
+          type: integer
+      content:
+        description: 正文内容
+        type: string
+      id:
+        type: integer
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  AdminPosts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        $ref: '#/definitions/AdminUsers'
+      authorId:
+        type: integer
+      category:
+        type: array
+        items:
+          $ref: '#/definitions/AdminCategory'
+      content:
+        type: string
+      gv:
+        description: 作品的gv号
+        type: string
+      id:
+        type: integer
+      status:
+        $ref: '#/definitions/Status'
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+  AdminProduct:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        $ref: '#/definitions/AdminUsers'
+      authorId:
+        type: integer
+      content:
+        type: string
+      endDate:
+        description: 下线日期
+        type: string
+      id:
+        type: integer
+      serieId:
+        description: 系列id
+        type: string
+      startDate:
+        description: 上线日期
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/ProductType'
+  AdminProducts:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      author:
+        $ref: '#/definitions/AdminUsers'
+      authorId:
+        type: integer
+      content:
+        type: string
+      gv:
+        description: 作品的gv号
+        type: string
+      id:
+        type: integer
+      serieId:
+        description: 系列id
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/ProductType'
+  AdminUploadFileItem:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      id:
+        type: integer
+      ip:
+        type: string
+      path:
+        type: string
+      systemUser:
+        $ref: '#/definitions/SystemUser'
+      type:
+        type: string
+      ua:
+        type: string
+      url:
+        type: string
+      webUser:
+        $ref: '#/definitions/AdminUsers'
+  AdminUser:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      avatar:
+        type: string
+      birthday:
+        type: string
+      description:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: string
+      sex:
+        type: integer
+        format: int32
+      uid:
+        type: string
+  AdminUsers:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      avatar:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: string
+      uid:
+        type: string
+  AnnouncementItem:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      content:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+  Banner:
+    description: 幻灯片
+    type: object
+    properties:
+      image:
+        description: 图像链接
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  CaptchaDots:
+    description: 点击验证码
+    type: object
+    properties:
+      captBase64:
+        type: string
+      captKey:
+        type: string
+      captThumbBase64:
+        type: string
+  CaptchaImage:
+    description: 图形验证码
+    type: object
+    properties:
+      captchaBase64:
+        description: 验证码图片base64
+        type: string
+      captchaCode:
+        description: 验证码code
+        type: string
+      captchaId:
+        description: 验证码id
+        type: string
+  Carousel:
+    description: 幻灯片
+    type: object
+    properties:
+      image:
+        description: 图像链接
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  OptionBox:
+    type: object
+    properties:
+      className:
+        description: 自定义的className
+        type: string
+      content:
+        description: 内容
+        $ref: '#/definitions/OptionBoxContent'
+      html:
+        description: 模块的广告html代码
+        type: string
+      icon:
+        description: 模块图标
+        type: string
+      title:
+        description: 模块标题
+        type: string
+      visible:
+        description: 模块可见权限
+        type: string
+        enum:
+        - default
+        - login
+      widget:
+        description: 侧边栏小工具
+        $ref: '#/definitions/OptionBoxWidget'
+  OptionBoxContent:
+    type: object
+    properties:
+      boxModuleCarousel:
+        $ref: '#/definitions/OptionBoxModuleCarousel'
+      boxModuleEpisodes:
+        $ref: '#/definitions/OptionBoxModuleEpisodes'
+      boxModuleMenus:
+        $ref: '#/definitions/OptionBoxModuleMenus'
+      boxModulePosts:
+        $ref: '#/definitions/OptionBoxModulePosts'
+      boxModuleProduct:
+        $ref: '#/definitions/OptionBoxModuleProduct'
+      type:
+        description: 模块类型
+        type: string
+        enum:
+        - default
+        - posts
+        - product
+        - recom
+        - carousel
+        - menus
+        - timeline
+        - episodes
+  OptionBoxMneu:
+    type: object
+    properties:
+      icon:
+        description: 图标
+        type: string
+      info:
+        description: 描述
+        type: string
+      target:
+        description: 指向目标
+        type: string
+      title:
+        description: 标题
+        type: string
+  OptionBoxModuleCarousel:
+    description: 幻灯片+推荐文章
+    type: object
+    properties:
+      carousel:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+      recom:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+  OptionBoxModuleEpisodes:
+    type: object
+    properties:
+      count:
+        description: 作品的数量
+        type: integer
+      episodesId:
+        description: 内容id,多个用 , 分割
+        type: string
+      order:
+        description: 根据xxx来进行排序
+        type: string
+      sort:
+        description: 排序规则
+        type: string
+      type:
+        description: 展示作品的类型
+        type: string
+  OptionBoxModuleMenus:
+    type: array
+    items:
+      $ref: '#/definitions/OptionBoxMneu'
+  OptionBoxModulePosts:
+    type: object
+    properties:
+      category:
+        description: 作品的分类
+        type: array
+        items:
+          type: integer
+      count:
+        description: 作品的数量
+        type: integer
+      order:
+        description: 根据xxx来进行排序
+        type: string
+      postsId:
+        description: 文章id,多个用 , 分割
+        type: string
+      sort:
+        description: 排序规则
+        type: string
+      type:
+        description: 展示作品的类型
+        type: string
+  OptionBoxModuleProduct:
+    type: object
+    properties:
+      count:
+        description: 作品的数量
+        type: integer
+      order:
+        description: 根据xxx来进行排序
+        type: string
+      productId:
+        description: 内容id,多个用 , 分割
+        type: string
+      sort:
+        description: 排序规则
+        type: string
+      type:
+        description: 展示作品的类型
+        type: string
+        enum:
+        - default
+        - acg
+        - tv
+        - movie
+  OptionBoxWidget:
+    type: object
+    properties:
+      carousel:
+        type: array
+        items:
+          $ref: '#/definitions/Carousel'
+      enable:
+        description: 开关
+        type: boolean
+      episodes:
+        $ref: '#/definitions/OptionBoxModuleEpisodes'
+      posts:
+        $ref: '#/definitions/OptionBoxModulePosts'
+      product:
+        $ref: '#/definitions/OptionBoxModuleProduct'
+      title:
+        type: string
+      type:
+        description: 排行榜类型
+        type: string
+        enum:
+        - default
+        - posts
+        - product
+        - carousel
+        - episodes
+  OptionEmail:
+    description: 系统配置的邮箱
+    type: object
+    properties:
+      fromEmail:
+        type: string
+      fromUname:
+        type: string
+      host:
+        type: string
+      password:
+        type: string
+      port:
+        type: integer
+        format: int32
+      userName:
+        type: string
+  OptionGoogleAnalytics:
+    type: object
+    properties:
+      id:
+        description: 谷歌统计拿到的id
+        type: string
+  OptionMenu:
+    type: object
+    properties:
+      category:
+        type: integer
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/OptionMenu'
+      icon:
+        type: string
+      name:
+        type: string
+      target:
+        type: string
+  OptionOauth:
+    type: object
+    properties:
+      github:
+        $ref: '#/definitions/OptionOauthGithub'
+      google:
+        $ref: '#/definitions/OptionOauthGoogle'
+  OptionOauthGithub:
+    type: object
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      enable:
+        type: boolean
+      redirectUri:
+        type: string
+      scope:
+        type: string
+  OptionOauthGoogle:
+    type: object
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      enable:
+        type: boolean
+      redirectUri:
+        type: string
+      scope:
+        type: string
+  OptionPageCode:
+    type: object
+    additionalProperties:
+      type: string
+  OptionRegister:
+    type: object
+    properties:
+      allow:
+        description: 是否允许注册
+        type: boolean
+      model:
+        description: 注册模式
+        type: number
+        format: int32
+  OptionRelease:
+    type: object
+    properties:
+      comment:
+        description: 是否允许评论
+        type: boolean
+      posts:
+        description: 是否允许投稿
+        type: boolean
+  OptionRouter:
+    type: object
+    properties:
+      rule:
+        $ref: '#/definitions/OptionRouterRule'
+  OptionRouterRule:
+    type: object
+    properties:
+      author:
+        description: 作者页面
+        type: string
+      category:
+        description: 分类页面
+        type: string
+      episode:
+        description: 作品页面
+        type: string
+      posts:
+        description: 作品页面
+        type: string
+      product:
+        description: 作品页面
+        type: string
+      redirect:
+        description: 是否使用错误页面
+        type: boolean
+  OptionSiteinfo:
+    type: object
+    properties:
+      description:
+        description: 站点描述
+        type: string
+      keywords:
+        description: 站点关键词
+        type: string
+      sitedescription:
+        description: 站点副标题
+        type: string
+      sitename:
+        description: 站点名称
+        type: string
+      siteurl:
+        description: 站点链接
+        type: string
+  PostOriginAt:
+    description: 作品来源
+    type: string
+  PostType:
+    description: 作品的类型
+    type: string
+    enum:
+    - article
+    - video
+    - image
+    - music
+  ProductType:
+    type: string
+    enum:
+    - acg
+    - tv
+    - movie
+  ReleasePostImage:
+    type: object
+    properties:
+      name:
+        description: 图像名称
+        type: string
+      urls:
+        description: 图像链接列表
+        type: string
+  ReleasePostMusic:
+    type: object
+    properties:
+      info:
+        description: 音频简介
+        type: string
+      name:
+        description: 音频名称
+        type: string
+      pic:
+        description: 音频封面
+        type: string
+      url:
+        description: 音频链接
+        type: string
+  ReleasePostVideo:
+    type: object
+    properties:
+      info:
+        description: 视频简介
+        type: string
+      name:
+        description: 视频名称
+        type: string
+      pic:
+        description: 视频封面
+        type: string
+      url:
+        description: 视频链接
+        type: string
+  RequestAdminActionLogin:
+    type: object
+    allOf:
+    - $ref: '#/definitions/RequestCaptcha'
+    properties:
+      login:
+        type: string
+      password:
+        type: string
+  RequestAdminAnnouncementCreate:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+  RequestAdminCategoryAdd:
+    type: object
+    properties:
+      name:
+        description: 当前分类名称
+        type: string
+      parentId:
+        description: 当前分类父级id
+        type: integer
+      slug:
+        description: 当前分类别名
+        type: string
+  RequestAdminCategoryUpdate:
+    type: object
+    properties:
+      name:
+        description: 当前分类名称
+        type: string
+      parentId:
+        description: 当前分类父级id
+        type: integer
+      slug:
+        description: 当前分类别名
+        type: string
+  RequestAdminChannelCreate:
+    type: object
+    properties:
+      enable:
+        type: boolean
+      name:
+        type: string
+      title:
+        type: string
+  RequestAdminChannelUpdate:
+    type: object
+    $ref: '#/definitions/AdminChannel'
+  RequestAdminCommentUpdate:
+    type: object
+    properties:
+      authorId:
+        type: integer
+      content:
+        type: string
+      id:
+        type: integer
+      parentId:
+        type: integer
+      postsId:
+        type: integer
+      replyUserId:
+        type: integer
+      status:
+        $ref: '#/definitions/Status'
+  RequestAdminCommentsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      id:
+        description: 评论id
+        type: integer
+        x-nullable: true
+      parentId:
+        description: 父级id
+        type: integer
+        x-nullable: true
+      postsId:
+        description: 关联的作品id
+        type: integer
+        x-nullable: true
+      replyUserId:
+        description: 回复的用户ID
+        type: integer
+        x-nullable: true
+      status:
+        allOf:
+        - $ref: '#/definitions/Status'
+        - x-nullable: true
+      unscoped:
+        description: 是否查询被删除的作品
+        type: boolean
+        x-nullable: true
+  RequestAdminCommentsRecover:
+    description: 批量更改评论状态
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+  RequestAdminCommentsStatus:
+    description: 批量更改评论状态
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+      status:
+        $ref: '#/definitions/Status'
+  RequestAdminEpisodeUpdate:
+    type: object
+    properties:
+      id:
+        type: integer
+      number:
+        description: 号码
+        type: string
+      order:
+        type: number
+        format: float64
+      overview:
+        type: string
+      pic:
+        type: string
+      productId:
+        type: integer
+      target:
+        type: string
+      title:
+        type: string
+      vip:
+        type: boolean
+  RequestAdminEpisodesCreates:
+    type: object
+    properties:
+      episodes:
+        type: array
+        items:
+          $ref: '#/definitions/AdminEpisodeCreate'
+  RequestAdminEpisodesDeletes:
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+  RequestAdminEpisodesList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      id:
+        type: integer
+        x-nullable: true
+      productId:
+        type: integer
+        x-nullable: true
+      title:
+        type: string
+        x-nullable: true
+  RequestAdminMallCreate:
+    type: object
+    properties:
+      name:
+        type: string
+        x-nullable: true
+      pic:
+        type: string
+        x-nullable: true
+      price:
+        type: string
+        x-nullable: true
+      status:
+        type: string
+        x-nullable: true
+      target:
+        type: string
+        x-nullable: true
+      type:
+        type: string
+        x-nullable: true
+  RequestAdminPostUpdate:
+    type: object
+    properties:
+      authorId:
+        type: integer
+      category:
+        type: array
+        items:
+          type: integer
+      content:
+        type: string
+      id:
+        type: integer
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  RequestAdminPostsCreate:
+    type: object
+    properties:
+      authorId:
+        type: integer
+      category:
+        type: array
+        items:
+          type: integer
+      content:
+        type: string
+      image:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostImage'
+      music:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostMusic'
+      originAt:
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/PostType'
+      video:
+        type: array
+        items:
+          $ref: '#/definitions/ReleasePostVideo'
+  RequestAdminPostsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      categoryId:
+        description: 分类id
+        type: integer
+        x-nullable: true
+      id:
+        type: integer
+        x-nullable: true
+      status:
+        description: 作品状态
+        allOf:
+        - $ref: '#/definitions/Status'
+        - x-nullable: true
+      title:
+        description: 模糊搜索标题
+        type: string
+        x-nullable: true
+      type:
+        description: 作品类型
+        allOf:
+        - $ref: '#/definitions/PostType'
+        - x-nullable: true
+      unscoped:
+        description: 是否查询被删除的作品
+        type: boolean
+        x-nullable: true
+  RequestAdminPostsRecover:
+    description: 批量恢复作品
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+  RequestAdminPostsStatus:
+    description: 批量更改作品状态
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+      status:
+        $ref: '#/definitions/Status'
+  RequestAdminProductCreate:
+    type: object
+    properties:
+      authorId:
+        type: integer
+      content:
+        type: string
+      endDate:
+        type: string
+        x-nullable: true
+      serieId:
+        description: 系列id
+        type: string
+        x-nullable: true
+      startDate:
+        type: string
+        x-nullable: true
+      status:
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/ProductType'
+  RequestAdminProductUpdate:
+    type: object
+    properties:
+      authorId:
+        type: integer
+      content:
+        type: string
+      endDate:
+        type: string
+        x-nullable: true
+      id:
+        type: integer
+      serieId:
+        description: 系列id
+        type: string
+        x-nullable: true
+      startDate:
+        type: string
+        x-nullable: true
+      status:
+        $ref: '#/definitions/Status'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      type:
+        $ref: '#/definitions/ProductType'
+  RequestAdminProductsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      authorId:
+        description: 作者id
+        type: integer
+        x-nullable: true
+      id:
+        type: integer
+        x-nullable: true
+      serieId:
+        description: 系列id
+        type: string
+        x-nullable: true
+      status:
+        description: 作品状态
+        allOf:
+        - $ref: '#/definitions/Status'
+        - x-nullable: true
+      title:
+        description: 模糊搜索标题
+        type: string
+        x-nullable: true
+      type:
+        description: 作品类型
+        type: string
+        x-nullable: true
+      unscoped:
+        description: 是否查询被删除的作品
+        type: boolean
+        x-nullable: true
+  RequestAdminProductsRecover:
+    description: 批量恢复内容
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+  RequestAdminProductsSerie:
+    description: 批量更改内容系列
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+      serieId:
+        description: 系列id
+        type: string
+  RequestAdminProductsStatus:
+    description: 批量更改内容状态
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+      status:
+        $ref: '#/definitions/Status'
+  RequestAdminUserCreate:
+    type: object
+    required:
+    - name
+    - password
+    properties:
+      birthday:
+        type: string
+        x-nullable: true
+      description:
+        type: string
+        x-nullable: true
+      email:
+        type: string
+        x-nullable: true
+      name:
+        type: string
+        x-nullable: false
+      password:
+        type: string
+        x-nullable: false
+      phone:
+        type: string
+        x-nullable: true
+      sex:
+        type: integer
+        format: int32
+        x-nullable: true
+  RequestAdminUserUpdate:
+    type: object
+    required:
+    - id
+    properties:
+      avatar:
+        type: string
+        x-nullable: true
+      birthday:
+        type: string
+        x-nullable: true
+      description:
+        type: string
+        x-nullable: true
+      email:
+        type: string
+        x-nullable: true
+      id:
+        type: integer
+        x-nullable: false
+      name:
+        type: string
+        x-nullable: true
+      password:
+        type: string
+        x-nullable: true
+      phone:
+        type: string
+        x-nullable: true
+      sex:
+        type: integer
+        format: int32
+        x-nullable: true
+  RequestAdminUsersList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/scope'
+    properties:
+      email:
+        description: 用户邮箱
+        type: string
+        x-nullable: true
+      id:
+        description: 用户id
+        type: integer
+        x-nullable: true
+      name:
+        description: 用户名
+        type: string
+        x-nullable: true
+      phone:
+        description: 用户手机
+        type: string
+        x-nullable: true
+  RequestCaptcha:
+    description: 提交的验证码数据
+    type: object
+    properties:
+      captcha:
+        description: 图形验证码
+        type: object
+        x-nullable: true
+        $ref: '#/definitions/RequestCaptchaImage'
+      captchaToken:
+        description: token 免验证
+        type: string
+        x-nullable: true
+      dots:
+        description: 点击验证码
+        type: object
+        x-nullable: true
+        $ref: '#/definitions/RequestCaptchaDots'
+  RequestCaptchaDots:
+    description: 提交的点击验证码
+    type: object
+    properties:
+      captKey:
+        type: string
+      values:
+        type: array
+        items:
+          type: string
+  RequestCaptchaImage:
+    description: 提交的图形验证码
+    type: object
+    properties:
+      captchaCode:
+        description: 验证码code
+        type: string
+      captchaId:
+        description: 验证码id
+        type: string
+  RequestOptionEmail:
+    type: object
+    allOf:
+    - $ref: '#/definitions/OptionEmail'
+  RequestOptionGoogleAnalytics:
+    $ref: '#/definitions/OptionGoogleAnalytics'
+  RequestOptionMenus:
+    type: array
+    items:
+      $ref: '#/definitions/OptionMenu'
+  RequestOptionOauth:
+    description: 提交的验证码数据
+    type: object
+    $ref: '#/definitions/OptionOauth'
+  RequestOptionPageCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/OptionPageCode'
+  RequestOptionRegister:
+    type: object
+    allOf:
+    - $ref: '#/definitions/OptionRegister'
+  RequestOptionRelease:
+    type: object
+    allOf:
+    - $ref: '#/definitions/OptionRelease'
+  RequestOptionRouter:
+    $ref: '#/definitions/OptionRouter'
+  RequestOptionSiteinfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/OptionSiteinfo'
+  RequestStaticBfs:
+    description: 提交的验证码数据
+    type: object
+    $ref: '#/definitions/StaticBfs'
+  RequestSystemUserInfo:
+    type: object
+    properties:
+      password:
+        type: string
+        x-nullable: true
+  RequestSystemUserUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+        x-nullable: true
+      password:
+        type: string
+        x-nullable: true
+      role:
+        description: 用户角色
+        type: string
+        enum:
+        - system
+        x-nullable: true
+      status:
+        description: 用户状态
+        type: string
+        enum:
+        - active
+        - freeze
+        x-nullable: true
+  RequestSystemUsersAdd:
+    type: object
+    properties:
+      name:
+        type: string
+      password:
+        type: string
+      role:
+        description: 用户角色
+        type: string
+        enum:
+        - system
+      status:
+        description: 用户状态
+        type: string
+        enum:
+        - active
+        - freeze
+  RequestSystemUsersUpdate:
+    type: object
+    properties:
+      name:
+        type: string
+        x-nullable: true
+      password:
+        type: string
+        x-nullable: true
+      role:
+        description: 用户角色
+        type: string
+        enum:
+        - super
+        - admin
+        - user
+        x-nullable: true
+      status:
+        description: 用户状态
+        type: string
+        enum:
+        - active
+        - freeze
+        x-nullable: true
+  RequestTmdbSearch:
+    type: object
+    properties:
+      keyword:
+        type: string
+  ResponseAdminActionLogin:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          token:
+            type: string
+          user:
+            type: object
+            $ref: '#/definitions/SystemUser'
+  ResponseAdminAnalyticsApp:
+    description: 资源请求数据
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/definitions/AdminAnalyticsAppItem'
+  ResponseAdminAnalyticsData:
+    description: 统计分析数据
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          timelines:
+            $ref: '#/definitions/AdminAnalyticsTimeline'
+          totals:
+            $ref: '#/definitions/AdminAnalyticsTotal'
+  ResponseAdminAnalyticsEvents:
+    description: 统计事件
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          events:
+            type: array
+            items:
+              $ref: '#/definitions/AdminAnalyticsEventItem'
+  ResponseAdminAnalyticsRecord:
+    description: 资源请求数据
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        $ref: '#/definitions/AdminAnalyticsRecord'
+  ResponseAdminAnnouncement:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          announcement:
+            type: object
+            $ref: '#/definitions/AnnouncementItem'
+  ResponseAdminAnnouncementList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          announcements:
+            type: array
+            items:
+              $ref: '#/definitions/AnnouncementItem'
+          total:
+            type: integer
+  ResponseAdminCategory:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          category:
+            type: object
+            $ref: '#/definitions/AdminCategory'
+  ResponseAdminCategoryList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          categorys:
+            type: array
+            items:
+              $ref: '#/definitions/AdminCategory'
+  ResponseAdminChannel:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          channel:
+            $ref: '#/definitions/AdminChannel'
+  ResponseAdminChannelList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          channels:
+            type: array
+            items:
+              $ref: '#/definitions/AdminChannel'
+  ResponseAdminComment:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          comment:
+            type: object
+            $ref: '#/definitions/AdminComment'
+  ResponseAdminCommentsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          comments:
+            type: array
+            items:
+              $ref: '#/definitions/AdminComments'
+          total:
+            description: 总数量
+            type: integer
+  ResponseAdminEpisode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episode:
+            $ref: '#/definitions/AdminEpisode'
+  ResponseAdminEpisodeUpdate:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episode:
+            $ref: '#/definitions/AdminEpisode'
+  ResponseAdminEpisodesCreates:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+  ResponseAdminEpisodesDeletes:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+  ResponseAdminEpisodesList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          episodes:
+            type: array
+            items:
+              $ref: '#/definitions/AdminEpisodes'
+          total:
+            type: integer
+  ResponseAdminMall:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          mall:
+            type: object
+            $ref: '#/definitions/AdminMallItem'
+  ResponseAdminMallList:
+    description: 列表
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          malls:
+            type: array
+            items:
+              $ref: '#/definitions/AdminMallItem'
+          total:
+            description: 总数量
+            type: integer
+  ResponseAdminPost:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: object
+            $ref: '#/definitions/AdminPost'
+  ResponseAdminPostsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          posts:
+            type: array
+            items:
+              $ref: '#/definitions/AdminPosts'
+          total:
+            type: integer
+  ResponseAdminProduct:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          product:
+            type: object
+            $ref: '#/definitions/AdminProduct'
+  ResponseAdminProductsList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          products:
+            type: array
+            items:
+              $ref: '#/definitions/AdminProducts'
+          total:
+            type: integer
+  ResponseAdminUser:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          user:
+            $ref: '#/definitions/AdminUser'
+  ResponseAdminUsersList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          total:
+            description: 总数量
+            type: integer
+          users:
+            type: array
+            items:
+              $ref: '#/definitions/AdminUsers'
+  ResponseCaptcha:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          captcha:
+            description: 图形验证码
+            $ref: '#/definitions/CaptchaImage'
+          dots:
+            description: 点击验证码
+            $ref: '#/definitions/CaptchaDots'
+          enable:
+            description: 是否需要验证码
+            type: boolean
+          token:
+            description: 使用该token可以免验证码
+            type: string
+          type:
+            description: 验证码类型
+            type: string
+  ResponseOptionEmail:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          email:
+            $ref: '#/definitions/OptionEmail'
+  ResponseOptionGoogleAnalytics:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          GoogleAnalytics:
+            type: object
+            $ref: '#/definitions/OptionGoogleAnalytics'
+  ResponseOptionMenus:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          menus:
+            type: array
+            items:
+              $ref: '#/definitions/OptionMenu'
+  ResponseOptionOauth:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        $ref: '#/definitions/OptionOauth'
+  ResponseOptionPageCode:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        $ref: '#/definitions/OptionPageCode'
+  ResponseOptionRegister:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          register:
+            type: object
+            $ref: '#/definitions/OptionRegister'
+  ResponseOptionRelease:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          release:
+            type: object
+            $ref: '#/definitions/OptionRelease'
+  ResponseOptionRouter:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        $ref: '#/definitions/OptionRouter'
+  ResponseOptionSiteinfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          siteinfo:
+            type: object
+            $ref: '#/definitions/OptionSiteinfo'
+  ResponseStaticBfs:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        $ref: '#/definitions/StaticBfs'
+  ResponseSystemUserInfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          token:
+            type: string
+          user:
+            type: object
+            $ref: '#/definitions/SystemUser'
+  ResponseSystemUsersInfo:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          user:
+            type: object
+            $ref: '#/definitions/SystemUser'
+  ResponseSystemUsersList:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+        properties:
+          total:
+            type: integer
+          users:
+            type: array
+            items:
+              $ref: '#/definitions/SystemUser'
+  ResponseTmdbSearch:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/TmdbSearchResult'
+  Sex:
+    description: 用户的性别
+    type: integer
+    format: int32
+    enum:
+    - 0
+    - 1
+    - 2
+  StaticBfs:
+    type: object
+    properties:
+      avatar:
+        description: 默认头像地址
+        type: string
+      banner:
+        description: 横幅图片地址
+        type: string
+      favicon:
+        description: 网站图标地址
+        type: string
+      logo:
+        description: LOGO地址
+        type: string
+      thumbnail:
+        description: 略缩图地址
+        type: string
+  Status:
+    description: 状态
+    type: string
+    enum:
+    - pedding
+    - public
+  SystemUser:
+    type: object
+    allOf:
+    - $ref: '#/definitions/time'
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      role:
+        type: string
+      status:
+        type: string
+  TmdbCredit:
+    description: 演员
+    type: object
+    properties:
+      gender:
+        description: 性别
+        type: integer
+        format: int32
+      id:
+        description: 演员id
+        type: integer
+      name:
+        description: 名称
+        type: string
+      originalName:
+        description: 原名
+        type: string
+  TmdbSearchResult:
+    type: object
+    properties:
+      cover:
+        description: 封面
+        type: string
+      credits:
+        description: 演员列表
+        type: array
+        items:
+          $ref: '#/definitions/TmdbCredit'
+      date:
+        description: 日期
+        type: string
+      id:
+        type: integer
+      keywords:
+        description: 关键词
+        type: array
+        items:
+          type: string
+      language:
+        description: 语言
+        type: string
+      originCountry:
+        description: 国家
+        type: array
+        items:
+          type: string
+      overview:
+        description: 描述
+        type: string
+      path:
+        description: 目录路径,通过该路径获取到视频列表
+        type: string
+      seasons:
+        description: 剧集列表
+        type: array
+        items:
+          $ref: '#/definitions/TmdbSeason'
+      tags:
+        type: array
+        items:
+          type: string
+      thumbnail:
+        description: 本地封面路径,如果有
+        type: string
+      title:
+        description: 标题
+        type: string
+      type:
+        type: string
+      voteAverage:
+        description: 评分
+        type: number
+  TmdbSeason:
+    description: 季度剧集
+    type: object
+    properties:
+      cover:
+        type: string
+      date:
+        type: string
+      episodeCount:
+        type: integer
+        format: int32
+      episodes:
+        type: array
+        items:
+          $ref: '#/definitions/TmdbSeasonEpisode'
+      id:
+        type: integer
+      overview:
+        type: string
+      posterPath:
+        type: string
+      seasonNumber:
+        type: integer
+        format: int32
+      tags:
+        type: array
+        items:
+          type: string
+      title:
+        type: string
+  TmdbSeasonEpisode:
+    description: 集数
+    type: object
+    properties:
+      cover:
+        type: string
+      date:
+        type: string
+      overview:
+        type: string
+      title:
+        type: string
+  response:
+    type: object
+    allOf:
+    - $ref: '#/definitions/responseJson'
+    properties:
+      result:
+        type: object
+  responseJson:
+    type: object
+    properties:
+      message:
+        description: 具体的内容
+        type: string
+        example: 登录错误，请重新登录
+      scope:
+        description: 错误代码
+        type: integer
+      success:
+        description: true 表示 OK，其它表示错误。具体得看接口scope错误码
+        type: boolean
+        example: false
+  scope:
+    type: object
+    properties:
+      endDate:
+        description: 结束时间
+        type: string
+        x-nullable: true
+      limit:
+        description: 查询数量,最大不能超过100
+        type: integer
+        x-nullable: true
+      offset:
+        description: 偏移数量
+        type: integer
+        x-nullable: true
+      order:
+        description: 排序规则,根据 条件来排序
+        type: string
+        x-nullable: true
+      sort:
+        description: 排序,默认最新desc
+        type: string
+        enum:
+        - desc
+        - asc
+        - rand
+        x-nullable: true
+      startDate:
+        description: 开始时间
+        type: string
+        x-nullable: true
+  time:
+    type: object
+    properties:
+      createdDate:
+        description: 创建日期
+        type: string
+      updateDate:
+        description: 更新日期
+        type: string
